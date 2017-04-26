@@ -25,4 +25,4 @@ with open("spilastokkur.txt", "r", encoding="utf-8") as f:
 print("Velkominn í örugglega leiðinlegasta leik sem þú munt nokkurn tíman spila.")
 
 while True:
-    print("Y O W H A T S U P J I M B O")
+    print("Y 0 W H A T S U P J I M B O")
