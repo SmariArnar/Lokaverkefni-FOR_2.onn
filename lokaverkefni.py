@@ -16,7 +16,7 @@ listi1 = []
 listi2 = []
 
 skra = []
-with open("saltedpeanuts.txt", "r", encoding="utf-8") as f:
+with open("spilastokkur.txt", "r", encoding="utf-8") as f:
     for i in f.readlines():
         a = i.split(",")
         if "\n" in a[10]:
