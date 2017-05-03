@@ -14,11 +14,6 @@ class Kind:
         self.papi = _papi
         self.madre = _madre
 
-def PrentaSpil(_spilari):
-
-
-def Turn():
-
 listi1 = []
 listi2 = []
 
