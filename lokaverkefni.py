@@ -14,8 +14,29 @@ class Kind:
         self.papi = _papi
         self.madre = _madre
 
-listi1 = []
-listi2 = []
+def PrentaSpil(_spilari):
+    print("xd rawr")
+
+spilarar = []
+
+def Deal(_spilarar):
+    tel = 0
+    for i in range(spilararSpurning):
+        spilarar.append([])
+    for i in range(500):
+        if 52 - i >= spilararSpurning - tel:
+            randomTala = randint(0, len(spil) - 1)
+            spilarar[tel].append(spil.pop(randomTala))
+        else:
+            break
+        print(tel)
+        if tel >= spilararSpurning - 1:
+            tel = 0
+        else:
+            tel += 1
+
+def Turn(_spilarar):
+    print("")
 
 spil = []
 with open("spilastokkur.txt", "r", encoding="utf-8") as f:
@@ -26,25 +47,13 @@ with open("spilastokkur.txt", "r", encoding="utf-8") as f:
         spil.append(Kind(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10]))
 print("Velkominn í örugglega leiðinlegasta leik sem þú munt nokkurn tíman spila.")
 
+gera = 0
+
 while True:
     print("Y O W H A T S U P J I M B O")
     spilararSpurning = int(input("Hversu margir eru að spila?" ))
-    spilarar = []
-    tel = 0
-    for i in range(spilararSpurning):
-        spilarar.append([])
-    for i in range(500):
-        if 52 - i >= spilararSpurning - tel:
-            randomTala = randint(0,len(spil)-1)
-            spilarar[tel].append(spil.pop(randomTala))
-        else:
-            break
-        print(tel)
-        if tel >= spilararSpurning-1:
-            tel = 0
-        else:
-            tel += 1
+    Deal(spilararSpurning)
     print("Nú hefst leikurinn!")
     while True:
-        # prentar út spilið
+        Turn(spilarar[gera])
         print("")
