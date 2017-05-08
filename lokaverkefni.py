@@ -18,32 +18,56 @@ class Kind:
 def PrentaSpil(_spilari):
     print("xd rawr")
 
-spilarar = []
+spilari = []
+tolva = []
 
-def Deal(_spilarar):
-    tel = 0
-    for i in range(spilararSpurning):
-        spilarar.append([])
-    for i in range(500):
-        if 52 - i >= spilararSpurning - tel:
-            randomTala = randint(0, len(spil) - 1)
-            spilarar[tel].append(spil.pop(randomTala))
+def Deal():
+    while len(spil) > 0:
+        spilari.append(spil.pop(randint(0, len(spil) - 1)))
+        tolva.append(spil.pop(randint(0, len(spil) - 1)))
+
+def Turn(_numerADoti):
+    sigurvegari = gera
+    numerADoti = int(_numerADoti) - 1
+    afgangur = []
+    if spilari[0].listi[numerADoti] > tolva[0].listi[numerADoti]:
+        sigurvegari = 1
+        spilari.append(spilari.pop(0))
+        spilari.append(tolva.pop(0))
+    elif spilari[0].listi[numerADoti] < tolva[0].listi[numerADoti]:
+        sigurvegari = 0
+        tolva.append(tolva.pop(0))
+        tolva.append(spilari.pop(0))
+    elif spilari[0].listi[numerADoti] == tolva[0].listi[numerADoti]:
+        afgangur.append(spilari.pop(0))
+        afgangur.append(tolva.pop(0))
+    while True:
+        if len(afgangur) > 0:
+            if spilari[0].listi[numerADoti] > tolva[0].listi[numerADoti]:
+                sigurvegari = 1
+                for i in afgangur:
+                    spilari.append(i)
+                afgangur.clear()
+                spilari.append(spilari.pop(0))
+                spilari.append(tolva.pop(0))
+            elif spilari[0].listi[numerADoti] < tolva[0].listi[numerADoti]:
+                sigurvegari = 0
+                for i in afgangur:
+                    tolva.append(i)
+                afgangur.clear()
+                tolva.append(tolva.pop(0))
+                tolva.append(spilari.pop(0))
+            elif spilari[0].listi[numerADoti] == tolva[0].listi[numerADoti]:
+                afgangur.append(spilari.pop(0))
+                afgangur.append(tolva.pop(0))
         else:
             break
-        if tel >= spilararSpurning - 1:
-            tel = 0
-        else:
-            tel += 1
-
-def Turn(_spilari, _numerADoti):
-    sigurvegari = gera
-    _numerADoti-=1
-    afgangur = []
-    for i in range(len(spilarar)):
-        if _spilari.listi[_numerADoti] < spilarar[i][0].listi[_numerADoti]:
-            sigurvegari = i
-        elif _spilari.listi[_numerADoti] == spilarar[i][0].listi[_numerADoti]:
-            afgangur.append()
+    if sigurvegari == 1:
+        print("Þú ert sigurvegarinn!")
+    elif sigurvegari == 0:
+        print("Tölvan er sigurvegarinn!")
+    afgangur.clear()
+    return sigurvegari
 
 spil = []
 with open("spilastokkur.txt", "r", encoding="utf-8") as f:
@@ -62,44 +86,30 @@ print("\tsíðan bera allir leikmenn saman töluna undir eiginleikanum sem varð
 print("\n\tÞyngd í kílóum = 1\t\tMjólkurlagni dætra = 2\t\tEinkunn ullar = 3\t\t\t\tFjöldi afkvæma = 4")
 print("\n\tEinkunn læris = 5\t\tFrjósemi = 6\t\t\t\tGerð / þykkt bakvöðva = 7\t\tEinkunn fyrir malir = 8")
 
-gera = 0
+sigurvegari = 1
 
 while True:
-    #Notandinn er spurður hversu marga leikmenn hann vill hafa.
-    spilararSpurning = int(input("\n\nHversu margir eru að spila?" ))
-    Deal(spilararSpurning)
+    Deal()
     print("\nNú hefst leikurinn!\n")
     while True:
-        bil19 = "                   "
-        bil6 = "        "
+        if len(spilari) <= 0:
+            print("Tölvan vann!")
+            break
+        elif len(tolva) <= 0:
+            print("Þú vannst!")
+            break
+        gera = sigurvegari
+        print(spilari[0].nafn, spilari[0].listi)
+        numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum = -1
 
-        print("╭━━━━━━━━━━━━━━━━━━━━━━━━ ━━━━━━━━━━━╮")
-        print("┃   ┌──╮                ╭──┐  ┃")
-        print("┃   │┌─┴────────────┴─┐│  ┃")
-        print("┃   ││" + bil19 + "  ││  ┃")
-        print("┃   └┤" + bil19 + "   ├┘  ┃")
-        print("┃ ╭──╰─────── ─────────╯  ─╮ ┃")
-        print("┃ │                  ,@;@,    │  ┃")
-        print("┃ │     ,@;@;@;@;@;@/ )@;@;   │  ┃")
-        print("┃ │   ,;@;@;@;@;@;@|_/@' e\   │  ┃")
-        print("┃ │  (|@;@:@\@;@;@;@:@(    \  │  ┃")
-        print("┃ │    '@;@;@|@;@;@;@;'`' - ' │  ┃")
-        print("┃ │     '@;@;/;@;/;@;'        │  ┃")
-        print("┃ │      ) //   | ||          │  ┃")
-        print("┃ │      \ \ \   | ||         │  ┃")
-        print("┃ │       \ \ \  ) \ \        │  ┃")
-        print("┃ │        `''' `''``         │  ┃")
-        print("┃ ├ ─── ─┬────  ┬─ ──  ─┬──── ┤  ┃")
-        print("┃ │" + bil6 + "│" + bil6 + "│" + bil6 + "│" + bil6 + "│ ┃")
-        print("┃ │" + bil6 + "│" + bil6 + "│" + bil6 + "│" + bil6 + "│ ┃")
-        print("┃ ├───  ─┼────  ┼─ ──  ─┼────┤ ┃")
-        print("┃ │" + bil6 + "│" + bil6 + "│" + bil6 + "│" + bil6 + "│ ┃")
-        print("┃ │" + bil6 + "│" + bil6 + "│" + bil6 + "│" + bil6 + "│ ┃")
-        print("┃ ╰──╭──┴──  ──┴── ── ┴ ──╮──╯ ┃")
-        print("┃   ┌┤" + bil19 + "  ├┐   ┃")
-        print("┃   ││" + bil19 + "  ││   ┃")
-        print("┃   │└┬──────────────┬┘│   ┃")
-        print("┃   └─╯                    ╰─┘   ┃")
-        print("╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯")
-        numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum = input("Hvað viltu gera? ")
-        Turn(spilarar[gera], numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum)
+        print("Spilari:", len(spilari), "Tölva:", len(tolva))
+        if gera == 1:
+            numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum = randint(1,8)
+        elif gera == 0:
+            numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum = randint(1,8)
+            print("tölvan dró spil")
+            print(tolva[0].nafn, tolva[0].listi)
+            print("tölvan ákvað eftir mikla íhugun að nota númer", numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum)
+
+        print(tolva[0].nafn, tolva[0].listi)
+        sigurvegari = Turn(numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum)
