@@ -39,7 +39,7 @@ def Turn(_numerADoti):
     elif spilari[0].listi[numerADoti] == tolva[0].listi[numerADoti]:
         afgangur.append(spilari.pop(0))
         afgangur.append(tolva.pop(0))
-    time.sleep(5)
+    time.sleep(3)
     while True:
         if len(afgangur) > 0:
             if spilari[0].listi[numerADoti] > tolva[0].listi[numerADoti]:
@@ -66,13 +66,13 @@ def Turn(_numerADoti):
         print(" | |_ _/_/  __ _(_)_ _  _ _ _  _ _ _| |")
         print(" | -_) || | \ V / | ' \| ' \ || | '_|_|")
         print(" |_|  \_,_|  \_/|_|_||_|_||_\_,_|_| (_)\n")
-        time.sleep(5)
+        time.sleep(3)
     elif sigurvegari == 0:
         print("  _____ _   _ _                     _                   _ ")
         print(" |_   _(_)_(_) |_ ____ _ _ _   __ _(_)_ _  _ _ _  _ _ _| |")
         print("   | |  / _ \| \ V / _` | ' \  \ V / | ' \| ' \ || | '_|_|")
         print("   |_|  \___/|_|\_/\__,_|_||_|  \_/|_|_||_|_||_\_,_|_| (_)\n")
-        time.sleep(5)
+        time.sleep(3)
     afgangur.clear()
     return sigurvegari
 
