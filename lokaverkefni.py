@@ -63,9 +63,9 @@ def Turn(_numerADoti):
         else:
             break
     if sigurvegari == 1:
-        print("Þú ert sigurvegarinn!")
+        print("Þú vinnur þennan leik!")
     elif sigurvegari == 0:
-        print("Tölvan er sigurvegarinn!")
+        print("Tölvan vinnur þennan leik!")
     afgangur.clear()
     return sigurvegari
 
@@ -83,33 +83,34 @@ print("\tSá leikmaður hlotnast sigur sem eftir stendur þegar hinu/m leikmönn
 print("\tSpilunum 52 er skipt á milli leikmanna, sama hversu margir þeir eru.")
 print("\tAllir leikmenn draga spil og sá sem á leikinn velur eiginleika,")
 print("\tsíðan bera allir leikmenn saman töluna undir eiginleikanum sem varð fyrir valinu.")
-print("\n\tÞyngd í kílóum = 1\t\tMjólkurlagni dætra = 2\t\tEinkunn ullar = 3\t\t\t\tFjöldi afkvæma = 4")
-print("\n\tEinkunn læris = 5\t\tFrjósemi = 6\t\t\t\tGerð / þykkt bakvöðva = 7\t\tEinkunn fyrir malir = 8")
+print("\n\t1 = Þyngd í kílóum\t\t2 = Mjólkurlagni dætra\t\t3 = Einkunn ullar\t\t\t\t4 = Fjöldi afkvæma")
+print("\n\t5 = Einkunn læris\t\t6 = Frjósemi\t\t\t\t7 = Gerð / þykkt bakvöðva\t\t8 = Einkunn fyrir malir")
 
 sigurvegari = 1
 
 while True:
     Deal()
     print("\nNú hefst leikurinn!\n")
-    while True:
+    while flag == True:
         if len(spilari) <= 0:
-            print("Tölvan vann!")
+            print("Tölvan er sigurvegarinn!")
             break
+            flag = False
         elif len(tolva) <= 0:
-            print("Þú vannst!")
+            print("Þú ert sigurvegarinn!")
             break
+            flag == False
         gera = sigurvegari
         print(spilari[0].nafn, spilari[0].listi)
         numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum = -1
 
         print("Spilari:", len(spilari), "Tölva:", len(tolva))
         if gera == 1:
-            numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum = randint(1,8)
+            numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum = input("Hvaða eiginleika viltu nota?: ")
         elif gera == 0:
             numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum = randint(1,8)
-            print("tölvan dró spil")
-            print(tolva[0].nafn, tolva[0].listi)
+            print("Tölvan dróg",tolva[0].nafn, tolva[0].listi)
             print("tölvan ákvað eftir mikla íhugun að nota númer", numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum)
-
-        print(tolva[0].nafn, tolva[0].listi)
+        if gera == 1:
+            print("Tölvan dróg",tolva[0].nafn, tolva[0].listi)
         sigurvegari = Turn(numerADotiTilAdNotaTilTessAdBeraSamanVidOnnurDotHjaOdrumSpilurum)
